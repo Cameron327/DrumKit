@@ -8,6 +8,8 @@ for (var i = 0; i < numberOfDrumButtons; i++) {
 
         makeSound(buttonInnerHTML);
 
+        buttonAnimation(buttonInnerHTML);
+
     });
 }
 
@@ -20,6 +22,8 @@ document.addEventListener("keydown", function(e) {
 
     // access the key from the return value
     makeSound(e.key);
+
+    buttonAnimation(e.key);
 });
 
 function makeSound(key) {
@@ -53,7 +57,7 @@ function makeSound(key) {
             break;
         case "l":
             // this is how you create an HTML audio element
-            var kick = new Audio("sounds/kick.mp3");
+            var kick = new Audio("sounds/kick-bass.mp3");
             kick.play();
             break;
         
@@ -62,3 +66,21 @@ function makeSound(key) {
             break;
     }
 }
+
+
+function buttonAnimation(currentKey) {
+    // since we want to query the specific key, we can query the class name
+    var activeButton = document.querySelector("." + currentKey);
+
+    // go into that button's class list and toggle the class
+    activeButton.classList.add("pressed");
+    // since we don't want the button to be faded forever, we have to add a delay and then remove the class for the animation effect
+    // The first param of the setTimeout function will be the functoin that we want to run after a certain amount of time. 
+    // We will use an anonymous function
+    // The second param will be the amount of milliseconds
+    setTimeout(function() {
+        activeButton.classList.remove("pressed");
+    }, 100)
+
+}
+
