@@ -3,7 +3,7 @@
 var numberOfDrumButtons = document.querySelectorAll(".drum").length;
 for (var i = 0; i < numberOfDrumButtons; i++) {
     document.querySelectorAll("button")[i].addEventListener("click", function () {
-
+        // This is inside the callback function that is being called by the event listener
         var buttonInnerHTML = this.innerHTML;
 
         makeSound(buttonInnerHTML);
