@@ -14,7 +14,9 @@ for (var i = 0; i < numberOfDrumButtons; i++) {
 // Detecting keyboard presses
 // Used the word "document" to add this event listener to the whole document instead of just specific parts
 document.addEventListener("keydown", function(e) {
+    console.log("Before");
     console.log(e);
+    console.log("After");
 
     // access the key from the return value
     makeSound(e.key);
